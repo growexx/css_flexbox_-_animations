@@ -1,0 +1,174 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    position: relative;
+}
+
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(270deg, #ff6f61, #6b5b95, #88b04b, #f7cac9);
+    background-size: 800% 800%;
+    animation: gradientBackground 20s ease infinite;
+    z-index: -1;
+}
+
+@keyframes gradientBackground {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 1200px;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+}
+
+.card {
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 200px;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: absolute;
+    cursor: pointer;
+}
+
+.face {
+    width: 100px;
+    height: 100px;
+    position: relative;
+}
+
+.eye {
+    width: 20px;
+    height: 20px;
+    background-color: #000;
+    border-radius: 50%;
+    position: absolute;
+    top: 30%;
+}
+
+.eye.left {
+    left: 20%;
+}
+
+.eye.right {
+    right: 20%;
+}
+
+.mouth {
+    width: 50px;
+    height: 20px;
+    background-color: #000;
+    border-radius: 0 0 50px 50px;
+    position: absolute;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.face1 .eye, .face1 .mouth {
+    background-color: #000;
+}
+
+.face2 .eye {
+    background-color: #6b5b95;
+}
+
+.face2 .mouth {
+    background-color: #6b5b95;
+    border-radius: 50px 50px 0 0;
+}
+
+.face3 .eye {
+    background-color: #88b04b;
+}
+
+.face3 .mouth {
+    background-color: #88b04b;
+    transform: translateX(-50%) scaleX(1.5);
+}
+
+.face4 .eye {
+    background-color: #f7cac9;
+}
+
+.face4 .mouth {
+    background-color: #f7cac9;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    bottom: 15%;
+}
+
+.card:hover .face1 .eye.left, .card:hover .face1 .eye.right {
+    transform: translateY(3px);
+}
+
+.card:hover .face2 .eye.left, .card:hover .face2 .eye.right {
+    animation: wink 0.5s infinite alternate;
+}
+
+.card:hover .face3 .mouth {
+    animation: stretch 0.5s infinite alternate;
+}
+
+.card:hover .face4 .mouth {
+    transform: translateY(-5px);
+}
+
+@keyframes wink {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(5px);
+    }
+}
+
+@keyframes stretch {
+    0% {
+        transform: translateX(-50%) scaleX(1.5);
+    }
+    100% {
+        transform: translateX(-50%) scaleX(1);
+    }
+}
+
+@keyframes mirrorText {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scaleX(-1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
